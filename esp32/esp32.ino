@@ -34,8 +34,8 @@ void loop() {
   }
 
   client.print(String("GET http://localhost/esp32/index.php?") + 
-                          ("&temperature=") + T +
-                          ("&humidity=") + P +
+                          ("&temp=") + T +
+                          ("&hum=") + P +
                           " HTTP/1.1\r\n" +
                  "Host: " + host + "\r\n" +
                  "Connection: close\r\n\r\n");
