@@ -24,7 +24,8 @@ void setup() {
 
 void loop() {
   bmp();
-
+  
+  //connect to web server
   WiFiClient client;
   const int httpPort = 80;
   if (!client.connect(host, httpPort)) 
@@ -33,6 +34,7 @@ void loop() {
     return;
   }
 
+  //sending data to web server with GET method
   client.print(String("GET http://localhost/esp32/index.php?") + 
                           ("temp=") + T +
                           ("&hum=") + P +
