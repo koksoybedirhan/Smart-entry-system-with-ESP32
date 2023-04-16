@@ -1,4 +1,6 @@
 <?php 
+    include "libs/db.php";
+    include "libs/session.php";
     include "libs/funcitons.php";
     header("Content-type: text/plain");
     header("Content-Disposition: attachment; filename=log.csv");
@@ -9,3 +11,4 @@
         echo $data["time"]."\n";
     endwhile;
 ?>
+
