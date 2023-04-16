@@ -8,4 +8,14 @@
         mysqli_close($baglanti);
         return $result;
     }
+
+    function getAllDatas()
+    {
+        include "db.php";
+    
+        $query = "SELECT * from veri";
+        $result = mysqli_query($baglanti, $query);
+        mysqli_close($baglanti);
+        return $result;
+    }
 ?>
