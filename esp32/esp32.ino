@@ -53,6 +53,7 @@ void loop() {
   rf();
   delay(200);
   
+  //checking connection
   WiFiClient client;
   const int httpPort = 80;
   if (!client.connect(host, httpPort)) 
@@ -61,6 +62,7 @@ void loop() {
     return;
   }
 
+  //sending datas to server
   client.print(String("GET http://localhost/esp32/index.php?") + 
                           ("temp=") + T +
                           ("&hum=") + P +
