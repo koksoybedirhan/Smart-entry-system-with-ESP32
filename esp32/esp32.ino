@@ -66,7 +66,7 @@ void loop() {
   client.print(String("GET http://localhost/esp32/index.php?") + 
                           ("temp=") + T +
                           ("&hum=") + P +
-                          ("rfCode=") + rfCode +
+                          ("&rfCode=") + rfCode +
                           " HTTP/1.1\r\n" +
                  "Host: " + host + "\r\n" +
                  "Connection: close\r\n\r\n");
