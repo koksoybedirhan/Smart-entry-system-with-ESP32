@@ -3,13 +3,14 @@
     include "libs/session.php";
     include "libs/funcitons.php";
 
-    $temperature = $humidity = "";
+    $temperature = $humidity = $rfNum = "";
 
-    if(!empty($_GET['temp']) && !empty($_GET['hum']))
+    if(!empty($_GET['temp']) && !empty($_GET['hum']) && !empty($_GET['rfCode']))
     {
         $temperature = $_GET['temp'];
         $humidity = $_GET['hum']; 
-        $query = "INSERT INTO veri (temp, hum) VALUES ('$temperature', '$humidity')";
+        $rfNum = $_GET['rfCode']; 
+        $query = "INSERT INTO veri (temp, hum, rfCode) VALUES ('$temperature', '$humidity', '$rfNum')";
         $result = mysqli_query($baglanti, $query);
     }
 
@@ -24,7 +25,7 @@
         $url;
     }
     $page = $url;
-    $sec = "9";
+    $sec = "4";
 ?>
 
 <?php include "parts/header.php"; ?>
@@ -34,7 +35,7 @@
     <div class="container my-3">
         <div class="row">
         <?php $result = getData();  while($data = mysqli_fetch_assoc($result)): ?>
-            <div class="col-6">
+            <div class="col-4">
                 <div class="card">
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-title">Temperature <i class="fa-solid fa-temperature-three-quarters fa-fade"></i></h5>
@@ -42,11 +43,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <div class="card">
                     <div class="card-body" style="text-align: center;">
                         <h5 class="card-title">Humidity <i class="fa-solid fa-droplet fa-fade"></i></h5>
                         <p class="card-text"><?php echo $data["hum"]; ?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                        <h5 class="card-title">Rf Id<i class="fa-regular fa-address-card"></i></h5>
+                        <p class="card-text"><?php echo $data["rfCode"]; ?></p>
                     </div>
                 </div>
             </div>
