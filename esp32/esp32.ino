@@ -23,7 +23,7 @@ int demoMode = 0;
 int counter = 1;
 double T, P;  // Sıcaklık ve basınç değişkenleri
 typedef void (*Demo)(void);
-String rfCode;
+String rfCode = "";
 
 //web connection
 const char* ssid     = "Fatih-Bedirhan";
@@ -56,12 +56,19 @@ void loop() {
   //checking connection
   WiFiClient client;
   const int httpPort = 80;
+
   if (!client.connect(host, httpPort)) 
   {
     Serial.println("connection failed");
     return;
   }
 
+  //If anyone logg in the system, rfUser value will be default.
+  if(rfUser = "")
+  {
+    rfUser = "NoUser";
+  }
+  
   //sending datas to server
   client.print(String("GET http://localhost/esp32/index.php?") + 
                           ("temp=") + T +
@@ -85,7 +92,7 @@ void loop() {
     String line = client.readStringUntil('\r');
     Serial.print(line);   
   }
-  delay(10000);
+  delay(5000);
 }
 
 //rf id part
