@@ -23,7 +23,7 @@ int demoMode = 0;
 int counter = 1;
 double T, P;  // Sıcaklık ve basınç değişkenleri
 typedef void (*Demo)(void);
-String rfCode = "";
+String rfUser = "";
 
 //web connection
 const char* ssid     = "Fatih-Bedirhan";
@@ -73,7 +73,7 @@ void loop() {
   client.print(String("GET http://localhost/esp32/index.php?") + 
                           ("temp=") + T +
                           ("&hum=") + P +
-                          ("&rfCode=") + rfCode +
+                          ("&rfCode=") + rfUser +
                           " HTTP/1.1\r\n" +
                  "Host: " + host + "\r\n" +
                  "Connection: close\r\n\r\n");
@@ -117,7 +117,7 @@ void rf()
     content.concat(String(mfrc522.uid.uidByte[i], HEX));
   }
   Serial.println(content.substring(1));
-  rfCode = content.substring(1);
+  rfUser = content.substring(1);
   delay(100);
 }
 
@@ -145,6 +145,7 @@ void bmp()
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.drawString(64, 23, "Sıcaklık: " + String(T));
   display.drawString(64, 33, "Basınç: " + String(P));
+  display.drawString(64, 33, "RF-ID: " + String(rfUser));
   delay(500);
 }
 
