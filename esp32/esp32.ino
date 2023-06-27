@@ -145,7 +145,7 @@ void bmp()
   display.setTextAlignment(TEXT_ALIGN_CENTER);
   display.drawString(64, 23, "Sıcaklık: " + String(T));
   display.drawString(64, 33, "Basınç: " + String(P));
-  display.drawString(64, 33, "RF-ID: " + String(rfUser));
+  display.drawString(64, 43, "RF-ID: " + String(rfUser));
   delay(500);
 }
 
