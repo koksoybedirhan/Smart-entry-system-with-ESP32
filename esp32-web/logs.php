@@ -14,7 +14,7 @@
                 <div class="card">
                     <h3 style="text-align: center;">All Datas</h3>
                     <?php $result = getAllDatas();  while($data = mysqli_fetch_assoc($result)): ?>
-                        <h6 style="text-align: center; font-size:20px;"><?php echo "Temperature: ".$data["temp"]."- Humidity:".$data["hum"]." /Time: ".$data["time"]; ?></h6>
+                        <h6 style="text-align: center; font-size:20px;"><?php echo "Temperature: ".$data["temp"]."- Humidity:".$data["hum"]."- RF-ID:".$data["rfCode"]." /Time: ".$data["time"]; ?></h6>
                     <?php endwhile;?>
                 </div>
             </div>
