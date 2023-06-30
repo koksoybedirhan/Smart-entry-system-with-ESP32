@@ -19,6 +19,22 @@
         return $result;
     }
 
+    function getLastCard()
+    {
+        include "libs/db.php";
+        $rfNum = "";
+
+        if(!empty($_GET['rfCode']))
+        {
+            $rfNum = $_GET['rfCode']; 
+        }
+        
+        $query = "SELECT * from veri WHERE rfCode='$rfNum' ";
+        $result = mysqli_query($baglanti, $query);
+        mysqli_close($baglanti);
+        return $result;
+    }
+
     function getUser()
     {
         include "db.php";
@@ -28,6 +44,7 @@
         mysqli_close($baglanti);
         return $result;
     }
+
 
     function getAllUsers()
     {
