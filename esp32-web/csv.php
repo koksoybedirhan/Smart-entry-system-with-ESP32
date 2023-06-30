@@ -8,6 +8,7 @@
     $result = getAllDatas();  while($data = mysqli_fetch_assoc($result)):
         echo $data["temp"]." ";
         echo $data["hum"]." ";
+        echo $data["rfCode"]." ";
         echo $data["time"]."\n";
     endwhile;
 ?>
