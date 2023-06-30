@@ -69,21 +69,22 @@
                         <div class="col-6">
                             <?php if(isLoggedin()):?>
                             <br>
-                            <?php $result2 = getUser();  while($data2 = mysqli_fetch_assoc($result2)): ?>
                                 <img class="card-img-top" src="img/<?=$_SESSION['img']?>" alt="User" height="500">
                                 <div class="card-body" style="text-align: center;">
                                     <h5 class="card-title"><?php echo htmlspecialchars($_SESSION["name"])." (".htmlspecialchars($_SESSION["status"]).")";?></h5>
                                     <p class="card-text">Kart Numarası: <?php echo htmlspecialchars($_SESSION["rfid"])?></p>
                                     <a href="profile.php" class="btn btn-primary">Profile</a>
                                 </div>
-                            <?php endwhile; ?>
                             <?php else: ?>
                                 <br>
                                 <img class="card-img-top" src="img/user.png" alt="User" height="500">
                                 <div class="card-body" style="text-align: center;">
-                                    <h5 class="card-title">Son giriş yapan:
-                                        <br>Bedirhan Köksoy (Çalışan)</h5>
-                                    <p class="card-text">Kart Numarası: 624.367.136.732</p>
+                                <?php $result2 = getLastCard();  if($data2 = mysqli_fetch_assoc($result2)): ?>
+                                    <br>
+                                    <div class="card-body" style="text-align: center;">
+                                        <h5 class="card-title">Kart Numarası: <?php echo htmlspecialchars($data2["rfCode"])?></h5>
+                                    </div>
+                                <?php endif; ?>
                                 </div>
                             <?php endif; ?>
                         </div>
